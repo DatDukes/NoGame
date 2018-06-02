@@ -1,11 +1,10 @@
-
 -- Spatialization matrix --
 spm = {}
 spm.__index = spm
 
 setmetatable(spm,
 {
-    __index = vec2
+    __index = vec2,
     __call = function (cls, ...)
         self = setmetatable({}, cls)
         self:init(...)
