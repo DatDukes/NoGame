@@ -1,36 +1,18 @@
+require("scripts/class")
+
 -- Spatialization matrix --
-spm = {}
-spm.__index = spm
+spm = class({})
 
-setmetatable(spm,
-{
-    __index = vec2,
-    __call = function (cls, ...)
-        self = setmetatable({}, cls)
-        self:init(...)
-        return self
-    end
-})
-
-function spm:init(x, y, rot)
-    vec2.init(self, x, y)
+function spm:_init(x, y, rot, sx, sy)
+    self.pos = vec2(x, y)
+    self.scl = vec2(sx, sy)
     self.r = rot
 end
 
 -- Vector --
-vec2 = {}
-vec2.__index = vec2
+vec2 = class({})
 
-setmetatable(vec2,
-{
-    __call = function(cls, ...)
-        self = setmetatable({}, cls)
-        self:init(...)
-        return self
-    end
-})
-
-function vec2:init(x, y)
+function vec2:_init(x, y)
     self.x = x
     self.y = y
 end
